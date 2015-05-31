@@ -11,9 +11,9 @@ To run it, you have to use Linux because what we do is to launch VLC payer from 
 
 What we do is ton run a docker container that mounts our dirty-money image and launches VLC
 
-First we create the dirty-money container 
+First we create the dirty-money container with the /data directory as a volume
 
-`docker create --name dirty-money ipedrazas/diresta-dirty-money`
+`docker create --name dirty-money -v /data ipedrazas/diresta-dirty-money`
 
 Then we run VLC from a container mounting the volume from the `dirty-money` container.
 
@@ -22,3 +22,5 @@ docker run  -v /dev/snd:/dev/snd --privileged -e DISPLAY=unix$DISPLAY \
  -v /tmp/.X11-unix:/tmp/.X11-unix -e uid=$(id -u) -e gid=$(id -g) \
  --volumes-from dirty-money -e FILE=/data chrisdaish/vlc
 ```
+
+if you have trouble with the audio make sure that you select the right device.
