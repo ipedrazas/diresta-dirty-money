@@ -1,9 +1,6 @@
 FROM python:3-onbuild
 MAINTAINER ipedrazas@gmail.com
 
-ADD run.sh /app/run.sh
-RUN chmod +x /app/run.sh
-
 WORKDIR /app
 VOLUME ["/data"]
 
